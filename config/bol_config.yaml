@@ -1,0 +1,20 @@
+output_name: laptops
+save_strategy: xml 
+
+pagination: true
+
+enrich: true
+enrich_column: ean
+
+base_url: https://www.bol.com/nl/nl/l/laptops/4770/?bltgh=8546edb5-79eb-43fb-965a-ddfcf3e907d2.storefrontCircleHeroSlot_storefrontCircleHeroGroup.storefrontCircleHero-linkItem.Banner&promo=laptops_sf_circlehero_wmw24&showList=true
+start_page: 1
+end_page: 2
+link_base: https://www.bol.com/nl/nl/
+
+field_selectors:
+  title: 'div.product-title--inline'
+  link: 'a.product-title[href]'
+  price: 'span.promo-price'
+
+enrich_selectors: 
+  - dd.specs__value

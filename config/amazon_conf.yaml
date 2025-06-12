@@ -1,0 +1,20 @@
+output_name: amazon_laptops
+save_strategy: xml 
+
+pagination: true
+
+enrich: False
+# enrich_column: ean
+
+base_url: https://www.amazon.nl/s?i=electronics&bbn=16269066031&rh=n%3A16366027031&s=popularity-rank&fs=true
+start_page: 1
+end_page: 1
+link_base: https://www.amazon.nl
+
+field_selectors:
+  title: 'h2.a-size-base-plus'
+  link: 'a.a-link-normal[href]'
+  price: 'span.a-price-whole'
+
+# enrich_selectors: 
+#   - dd.specs__value

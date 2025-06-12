@@ -1,0 +1,19 @@
+output_name: guardian_articles
+save_strategy: csv 
+
+pagination: true
+
+enrich: true
+
+base_url: https://www.theguardian.com/uk/sport
+start_page: 1
+end_page: 1
+link_base: https://www.theguardian.com
+
+field_selectors:
+  title: a.dcr-2yd10d[aria-label]
+  link: a.dcr-2yd10d[href]
+  preview: div.dcr-1ulcea0
+
+enrich_selectors:
+  - div.article-body-viewer-selector p
