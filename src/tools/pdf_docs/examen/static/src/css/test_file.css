@@ -200,6 +200,7 @@ section { break-before: always; }
 
 .chapter-item h3 {
   margin-left: 45px;
+  font-size: 15px;
 }
 
 .chapter-labels li {
@@ -210,6 +211,22 @@ section { break-before: always; }
   border: 1px solid #ea5d0b9a;
   border-radius: 9999px;
   padding: 10px;
+}
+
+.keyword-grey {
+  background-color: #a4a4a449;   /* of #6c757d, of een andere grijstint */
+  font-weight: 600; /* optioneel */
+}
+
+/* module structure image */
+.module-structure {
+  margin-top: 145px;
+  display: block;            /* allows margin auto centering */
+  margin: 0 auto;            /* centers horizontally */
+  width: auto;               /* let height determine size */
+  height: 384px;              /* taller than wide, scales with viewport */
+  aspect-ratio: 3 / 5;       /* portrait ratio: width:height */
+  object-fit: contain;       /* keep full image visible */
 }
 
 

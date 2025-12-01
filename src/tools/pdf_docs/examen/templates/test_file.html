@@ -133,6 +133,12 @@
         <li>
           <span class="toc-index">4</span>
           <span class="toc-description">Reflecteren</span>
+          <ul>
+            <li>
+              <span class="toc-index">4.1</span>
+              <span class="toc-description">Feedback</span>
+            </li>
+          </ul>
         </li>
       </ul>
     </div>
@@ -177,11 +183,279 @@
     <div class="container-banner">
       <div class="container-seperate"></div>
     </div>
+    <div class="chapter-item">
+      <h4>Odoo 18</h4>
+      <p>
+        Odoo 18 is een moderne bedrijfsapplicatie
+        waarmee organisaties hun processen — van CRM en boekhouding
+        tot voorraadbeheer — in één platform kunnen beheren. De backend
+        draait op PostgreSQL als relationele database, terwijl
+        de logica en uitbreidbaarheid in de backend zijn gebaseerd op Python.
+        Voor het genereren van dynamische views en rapporten maakt
+        Odoo gebruik van de template engine Jinja2,
+        waardoor ontwikkelaars flexibel en efficiënt templates kunnen bouwen.
+        Hierdoor biedt Odoo 18 zowel bedrijven alsontwikkelaars een robuust en schaalbaar ecosysteem voor MKB-bedrijven.
+      </p>
     </div>
     <div class="chapter-item">
-      <h3>Odoo 18</h3>
+      <h4>Odoo.sh</h4>
+      <p>
+        Odoo.sh is het cloudplatform van Odoo dat speciaal is ontworpen om Odoo-implementaties eenvoudig te ontwikkelen,
+        testen en uit te rollen. Het platform integreert naadloos met Git en GitHub, waardoor ontwikkelaars rechtstreeks
+        vanuit hun repository nieuwe modules,
+        updates en branches kunnen deployen. Odoo.sh automatiseert daarnaast builds, testing en backups,
+        zodat teams zonder complexe infrastructuur toch een professionele DevOps-omgeving hebben.
+        Hierdoor biedt Odoo.sh een gestroomlijnde, veilige en schaalbare manier om Odoo-projecten te beheren.
+      </p>
+    </div>
+    <div class="chapter-item">
+      <h4>Visual Studio Code</h4>
+      <p>
+        Visual Studio Code (VS Code) is een lichte maar krachtige IDE die ideaal is voor het ontwikkelen van
+        Odoo-projecten dankzij
+        zijn flexibiliteit en uitgebreide ondersteuning aan extensies. Met ingebouwde ondersteuning voor Python,
+        Git-integratie en features zoals IntelliSense, debugging en code-formatting, versnelt VS Code het
+        ontwikkelproces aanzienlijk.
+        Ontwikkelaars kunnen eenvoudig werken met Git-branches, commits en pull requests rechtstreeks vanuit de editor,
+        Dit maakt het aansluitend met GitHub en Odoo.sh. Hierdoor biedt VS Code een efficiënte, moderne
+        omgeving voor Odoo-ontwikkeling.
+      </p>
+    </div>
+    </p>
+    </div>
+  </section>
+  <section class="page-content">
+    <div class="chapter-item">
+      <h4>Docker</h4>
+      <p>
+        Docker wordt in dit project gebruikt om een geïsoleerde Odoo 18-ontwikkel en test instantie te draaien.
+        Door Odoo in een container te plaatsen, inclusief benodigde services zoals PostgreSQL,
+        kunnen ontwikkelaars snel lokale omgevingen opzetten die exact overeenkomen met staging en productie.
+        Dit maakt het eenvoudiger om maatwerk te bouwen, testen en debuggen voordat wijzigingen via Git/GitHub naar
+        Odoo.sh worden gepusht. Dankzij Docker blijven omgevingen consistent, schaalbaar en gemakkelijk te resetten, wat
+        het ontwikkelproces
+        betrouwbaarder en efficiënter maakt.
+      </p>
+    </div>
+    <div class="container-banner">
+      <div class="container-seperate"></div>
+    </div>
+    <div class="chapter-item">
+      <h3> 2.2 - Architectuurpatroon</h3>
+    </div>
+    <div class="container-banner">
+      <div class="container-seperate"></div>
+    </div>
+    <div class="chapter-item">
+      <h4>Model-View-Controller</h4>
+      <p>
+        is een architectuurprincipe dat software opsplitst in drie duidelijk gescheiden onderdelen,
+        zodat applicaties overzichtelijk, schaalbaar en onderhoudbaar blijven:
+      </p>
+
+      <ol>
+        <li>
+          <strong>Model (M)</strong>
+          <p>
+            Het Model bevat de data en de logica die bepaalt hoe die data wordt verwerkt.
+            Het regelt zaken zoals:
+          </p>
+          <ul>
+            <li>Databasemodellen en hun velden</li>
+            <li>Relaties tussen objecten</li>
+            <li>Businesslogica, validaties en berekeningen</li>
+          </ul>
+        </li>
+        <br>
+        <li>
+          <strong>View (V)</strong>
+          <p>
+            De View bepaalt hoe informatie wordt weergegeven aan de gebruiker. Denk aan:
+          </p>
+          <ul>
+            <li>
+              Schermen, formulieren en lijsten
+            </li>
+            <li>
+              Templates voor rapporten of e-mails
+            </li>
+            <li>
+              Interactiecomponenten zoals knoppen en widgets
+            </li>
+          </ul>
+        </li>
+        <br>
+        <li>
+          <strong>Controller (C)</strong>
+        </li>
+        <p>
+          De Controller vormt de schakel tussen Model en View.
+          Hij verwerkt input van gebruikers, voert businesslogica uit en bepaalt welke data aan de View wordt gestuurd.
+          Voorbeelden:
+        </p>
+        <ul>
+          <li>
+            Acties uitvoeren wanneer een gebruiker op een knop klikt
+          </li>
+          <li>
+            Validaties toepassen voordat gegevens worden opgeslagen
+          </li>
+          <li>
+            Workflows starten of server-side berekeningen doen
+          </li>
+        </ul>
+      </ol>
+    </div>
+  </section>
+  <section class="page-content">
+    <div class="container-banner">
+      <div class="container-seperate"></div>
+    </div>
+    <div class="chapter-item">
+      <h3> 2.3 - Code conventies</h3>
+    </div>
+    <div class="container-banner">
+      <div class="container-seperate"></div>
+    </div>
+    <ol>
+      <li>
+        <strong>Stijl & Python-conventies</strong>
+      </li>
+      <p>
+        Odoo-ontwikkeling volgt in grote lijnen PEP8 als basis: consistente indentatie,
+        duidelijke spatiëring en betekenisvolle variabelenamen. Tools zoals Black,
+        isort en flake8/pylint-odoo worden ingezet om automatische formatting en kwaliteitscontrole te waarborgen.
+        Modules, klassen en methodes bevatten korte maar duidelijke docstrings, zodat code begrijpelijk en onderhoudbaar
+        blijft.
+      </p>
+      <li>
+        <strong>Naamgeving</strong>
+        <p>
+          Odoo volgt duidelijke naamgevingsregels:
+        </p>
+        <ul>
+          <li>Klassen in <span class="keyword-grey">CamelCase</span></li>
+          <li>Methoden, variabelen en velden in <span class="keyword-grey">snake_case</span></li>
+          <li>Constanten in <span class="keyword-grey">ALL_CAPS</span></li>
+          <li>Models in <span class="keyword-grey">my_module.model</span></li>
+          <li>XML-ID’s met module-prefix <span class="keyword-grey">my_module.view_partner_form</span></li>
+          <li>Mappen/bestanden in <span class="keyword-grey">snake_case</span></li>
+        </ul>
+      </li>
+      <br>
+      <li>
+        <strong>Module-structuur</strong>
+      </li>
+      <p>
+        Een correcte mappenstructuur is essentieel voor overzicht en schaalbaarheid.
+        Odoo-modules worden georganiseerd in logische onderdelen zoals:
+        <span class="keyword-grey">models/</span>,
+        <span class="keyword-grey">views/</span>,
+        <span class="keyword-grey">controllers/</span>,
+        <span class="keyword-grey">security/</span>,
+        <span class="keyword-grey">data/</span> en
+        <span class="keyword-grey">tests/</span>
+        Ieder model heeft bij voorkeur een apart Python-bestand, en views worden opgesplitst per model om onderhoud en
+        extensies eenvoudiger te maken.
+      </p>
+    </ol>
+    <br>
+    <img class="module-structure" src="../static/src/img/module_structure.png" />
+  </section>
+  <section class="page-content">
+    <div class="container-banner">
+      <div class="container-seperate"></div>
+    </div>
+    <div class="chapter-item">
+      <h3> 2.4 - Softwareontwikkelingsmethodiek</h3>
+    </div>
+    <div class="container-banner">
+      <div class="container-seperate"></div>
+    </div>
+    <div class="chapter-item">
+      <h4>Incrementele en Iteratieve Ontwikkeling</h4>
+      <p>
+        Voor de ontwikkeling van Odoo 18 modules wordt een combinatie van <strong>incrementele</strong> en
+        <strong>iteratieve</strong> ontwikkeling toegepast.
+        Dit zorgt ervoor dat nieuwe functionaliteit stapsgewijs wordt opgeleverd, terwijl bestaande onderdelen continu
+        worden verbeterd en geoptimaliseerd.
+      </p>
+
+      <h5>Incrementele ontwikkeling</h5>
+      <p>
+        Nieuwe onderdelen van het systeem worden in een afzonderlijke omgeving ontwikkeld.
+        Elk increment is een volledig functioneel onderdeel dat direct in de omgeving kan worden gebruikt en getest.
+        Voorbeelden in dit project:
+      </p>
+      <ul>
+        <li>Maatwerk ontwikkelde CMS-blokken die niet standaard beschikbaar zijn in Odoo.</li>
+        <li>Extra website modules toegevoegd als afzonderlijk increment.</li>
+        <li>Standaard CMS-blokken van Odoo gebruikt waar geen maatwerk nodig was, als volgende increment.</li>
+      </ul>
+
+
+      <h5>Iteratieve ontwikkeling</h5>
+      <p>
+        Bestaande functionaliteit wordt herhaaldelijk aangepast, verfijnd en verbeterd op basis van feedback of
+        optimalisatiebehoeften.
+        Dit gebeurt nadat een increment is geïmplementeerd en kan betrekking hebben op:
+      </p>
+      <ul>
+        <li>Bugfixes en foutoplossingen in modules of CMS-blokken.</li>
+        <li>Optimalisaties van formulieren, workflows en performance.</li>
+        <li>Verfijningen van layout, styling of gebruikerservaring.</li>
+      </ul>
+
+      <h5>Workflow in het Odoo-project</h5>
+      <ol>
+        <li>Ontwikkeling van nieuwe modules lokaal in <strong>Docker</strong>.</li>
+        <li>Versiebeheer en code review via <strong>Git/GitHub</strong>.</li>
+        <li>Deployment naar <strong>Odoo.sh</strong> development/staging branch voor testen.</li>
+        <li>Feedback verzamelen van eindgebruikers of Product Owner.</li>
+        <li>Iteratieve verbeteringen en bugfixes uitvoeren op bestaande functionaliteit.</li>
+        <li>Voltooide increments worden definitief uitgerold naar productie.</li>
+      </ol>
+
+      <h5>Voordelen van deze aanpak</h5>
+      <ul>
+        <li>Nieuwe functionaliteit kan stap voor stap worden toegevoegd zonder het volledige systeem tegelijk op te
+          leveren.</li>
+        <li>Bestaande modules blijven evolueren en verbeteren op basis van daadwerkelijke gebruikersfeedback.</li>
+        <li>Flexibiliteit bij veranderende eisen of aanvullende wensen.</li>
+        <li>Snelle oplevering van werkende functionaliteit, terwijl kwaliteit en stabiliteit behouden blijven.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="page-content">
+    <div class="container">
+      <div class="chapter-banner">
+        <h2>3.</h2>
+      </div>
+      <h2>Testen</h2>
+    </div>
+    <!-- content -->
+    <div class="chapter-item">
+      <h3> 3.1 - Test omgeving</h3>
+    </div>
+    <div class="container-banner">
+      <div class="container-seperate"></div>
+    </div>
+  </section>
+  <section id="page-content">
+    <div class="container">
+      <div class="chapter-banner">
+        <h2>4.</h2>
+      </div>
+      <h2>Reflecteren</h2>
+    </div>
+    <!-- content -->
+    <div class="chapter-item">
+      <h3> 4.1 - Feedback</h3>
+    </div>
+    <div class="container-banner">
+      <div class="container-seperate"></div>
     </div>
   </section>
 </body>
-
 </html>
