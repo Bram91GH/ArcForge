@@ -434,13 +434,117 @@
       </div>
       <h2>Testen</h2>
     </div>
-    <!-- content -->
+
     <div class="chapter-item">
-      <h3> 3.1 - Test omgeving</h3>
+      <h3> 3.1 - Testomgeving</h3>
     </div>
     <div class="container-banner">
       <div class="container-seperate"></div>
     </div>
+    <h4>Docker als Testomgeving</h4>
+    <p>
+      Voor de ontwikkeling en het testen van Odoo 18 modules wordt <strong>Docker</strong> gebruikt om een
+      volledig geïsoleerde en reproduceerbare omgeving op te zetten. Hierdoor kunnen ontwikkelaars
+      lokaal werken zonder dat de productieomgeving wordt beïnvloed.
+    </p>
+
+    <p>
+      De Docker-container bevat de Odoo 18 installatie en een bijbehorende <strong>PostgreSQL</strong> database,
+      waardoor de omgeving identiek is aan staging en productie. Maatwerk modules en configuraties kunnen
+      hierin volledig worden ontwikkeld en getest voordat ze via <strong>Git/GitHub</strong> naar
+      <strong>Odoo.sh</strong>
+      worden gepusht.
+    </p>
+
+    <p>
+      Het gebruik van Docker biedt meerdere voordelen:
+    </p>
+    <ul>
+      <li>Snelle en eenvoudige setup van een complete Odoo 18 testomgeving.</li>
+      <li>Volledige isolatie van de lokale ontwikkelomgeving ten opzichte van productie.</li>
+      <li>Makkelijk resetten of dupliceren van testomgevingen zonder dat dit invloed heeft op andere projecten.</li>
+      <li>Consistentie in development en testing, waardoor bugs eerder opgespoord kunnen worden.</li>
+    </ul>
+    </div>
+    <br>
+    <!-- content -->
+    <div class="container-banner">
+      <div class="container-seperate"></div>
+    </div>
+    <div class="chapter-item">
+      <h3> 3.2 - Unit Tests</h3>
+    </div>
+    <div class="container-banner">
+      <div class="container-seperate"></div>
+    </div>
+    <p>
+      <strong>Unit-tests</strong> zijn kleine, geautomatiseerde tests die controleren of één specifiek onderdeel (unit)
+      van je code correct werkt.
+      In Odoo worden ze toegepast voor:
+    </p>
+    <ul>
+      <li>
+        Testen van <strong>model-logica</strong>(velden, relaties, constraints, methods)
+      </li>
+      <li>
+        Testen van <strong>controllers</strong>(HTTP-routes, responses, rendering)
+      </li>
+      <li>
+        Testen van frontend routes met <span class="keyword-grey">HttpCase</span>
+      </li>
+    </ul>
+    <p>Het doel is fouten vroeg te detecteren en te garanderen dat implementaties of nieuwe features niets stukmaken.
+    </p>
+  </section>
+  <section>
+    <p>
+      Maatwerk Odoo-modules die het MVC-patroon volgen, gebruiken unittests om zowel models als controllers te
+      controleren.
+      Controller tests (HttpCase) valideren dat HTTP-routes zoals /projects goed werken,
+      inclusief filtering en het tonen van projecten met afbeeldingen. Model tests (TransactionCase) controleren de
+      database-logica,
+      zoals het aanmaken van records en het correct functioneren van relaties zoals project.image_ids.
+      Hiermee wordt de volledige MVC-keten betrouwbaar getest.
+    </p>
+    <ol>
+      <li>
+        <h4>Controller tests</h4>
+        <p>Deze testen dat je HTTP-routes werken zoals verwacht:</p>
+        <ul>
+          <li>
+            <span class="keyword-grey">/projects</span> geeft een pagina terug met status 200
+          </li>
+          <li>
+            Filtering werkt correct.
+          </li>
+          <li>
+            Projecten met afbeeldingen worden goed weergegeven.
+          </li>
+          <li>
+            De helper method <span class="keyword-grey">_create_bavarian_project</span> maakt een project met image voor
+            testdoeleinden
+          </li>
+        </ul>
+        <p>Dit zijn end-to-end tests voor websitecontrollers in het gerealiseerde project.</p>
+      </li>
+      <li>
+        <h4>Model tests</h4>
+        <p>Deze testen de database-logica:</p>
+        <ul>
+          <li>
+            Aanmaken en opslaan van countries, categories, industries en projecten
+          </li>
+          <li>
+            Controleren of velden correct worden opgeslagen
+          </li>
+          <li>
+            Testen dat de one2many relatie <span class="keyword-grey">project.image_ids werkt</span>
+          </li>
+        </ul>
+        <p>Dit test de maatwerkmodellen voor de module <span class="keyword-grey">x_projects</span> intern op correct
+          functioneren.</p>
+      </li>
+    </ol>
   </section>
   <section id="page-content">
     <div class="container">
@@ -458,4 +562,5 @@
     </div>
   </section>
 </body>
+
 </html>
